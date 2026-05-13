@@ -102,7 +102,7 @@ mcp__rohlik-promo__get_promotions()
 
 ## Čo ukazuje tento príklad
 
-1. **Custom MCP server slúži ako reálny debug nástroj** — nielen showcase pre kurzové zadanie, ale produkčne použiteľný počas debugu.
+1. **Custom MCP server slúži ako reálny debug nástroj** — produkčne použiteľný počas debugu, nielen showcase.
 2. **Stdio protocol funguje cez Claude Code** — server beží ako child process, komunikuje cez stdin/stdout JSON-RPC.
 3. **Mode switching cez env** — `ROHLIK_MCP_MODE` prepína mock_success ↔ mock_failure bez code change.
 4. **MCP server typed payloads** — Pydantic schémy (`CartSyncResult`, `PromotionContext`) sú zarovnané s backend domain schemami → ID schémy nevypadne pri MCP boundary.

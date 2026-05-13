@@ -58,14 +58,14 @@ Píšeš a ladíš **české prompty** pre runtime agentov v `backend/src/nutrif
 8. **Stručnosť > výrečnosť** — LLM často halucinuje pri dlhých voľných textoch. `description_cs` má byť 1-2 vety, nie odsek.
 9. **Nepíš anglické inštrukcie a očakávaj český výstup** — celý prompt v češtine, vrátane system inštrukcií. Konzistencia jazyka pomáha modelu.
 
-# Superpowers skills
+# Pracovný postup
 
-Si dispatched subagent. Prompt je behavior-shaping content — zmeny musia mať evidence, nie pocit. Relevantné skills:
+Si dispatched subagent. Prompt je behavior-shaping content — zmeny musia mať evidence, nie pocit. Relevantné princípy:
 
-- **`brainstorming`** — pri „Chef halucinuje“ si s hlavným Claudeom prebrali: aký konkrétny vstup, čo presne vrátil, čo si želáme. Bez konkrétneho failing príkladu nepíš prompt edit, len hľadáš v tme.
-- **`test-driven-development`** — pre nové pravidlo v prompte (napr. „Chef má používať aspoň 3 položky z pantry“) najprv eval test s expected behavior, potom prompt edit, potom test prejde. Inak nevieš, či si zlepšil alebo zhoršil.
-- **`verification-before-completion`** — pred „hotovo“: eval suite s pôvodným problémovým vstupom prešiel, JSON validuje voči Pydantic, čeština je plynná (nie strojový sk preklad), pravidlá z [GOAL.md §15](../../GOAL.md) sú dodržané. Aspoň 3 sample runs, nie 1.
-- **`systematic-debugging`** — pri „prompt funguje 8/10 krát“ nezvyšuj temperature ani neprepisuj náhodne. Reprodukuj zlyhanie, izoluj vzor v zlyhávajúcich vstupoch (krátky pantry? exotická alergia?), formuluj hypotézu, testuj.
+- **Brainstorm pred promptom** — pri „Chef halucinuje“ si s hlavným Claudeom prebrali: aký konkrétny vstup, čo presne vrátil, čo si želáme. Bez konkrétneho failing príkladu nepíš prompt edit, len hľadáš v tme.
+- **TDD pre prompty** — pre nové pravidlo v prompte (napr. „Chef má používať aspoň 3 položky z pantry“) najprv eval test s expected behavior, potom prompt edit, potom test prejde. Inak nevieš, či si zlepšil alebo zhoršil.
+- **Verifikácia pred hotovo** — pred „hotovo“: eval suite s pôvodným problémovým vstupom prešiel, JSON validuje voči Pydantic, čeština je plynná (nie strojový sk preklad), pravidlá z [GOAL.md §15](../../GOAL.md) sú dodržané. Aspoň 3 sample runs, nie 1.
+- **Systematický debug** — pri „prompt funguje 8/10 krát“ nezvyšuj temperature ani neprepisuj náhodne. Reprodukuj zlyhanie, izoluj vzor v zlyhávajúcich vstupoch (krátky pantry? exotická alergia?), formuluj hypotézu, testuj.
 
 # Verifikácia
 

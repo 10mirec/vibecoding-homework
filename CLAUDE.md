@@ -1,10 +1,10 @@
-# CLAUDE.md — Homework Workspace (NutriFlow)
+# CLAUDE.md — NutriFlow agent workspace
 
-> **Pro Claude Code.** Tento soubor je *prvý*, ktorý Claude Code načítá pri otvorení `homework/` ako workspace. Definuje **kedy a v akom poradí** invokovať Subagentov, Skills a MCP servery. Bez tohto súboru sú tieto tri vrstvy len pasívnym zoznamom — s ním sa stávajú orchestrovaným nástrojom.
+> **Pro Claude Code.** Tento soubor je *prvý*, ktorý Claude Code načítá pri otvorení tohto adresára ako workspace. Definuje **kedy a v akom poradí** invokovať Subagentov, Skills a MCP servery. Bez tohto súboru sú tieto tri vrstvy len pasívnym zoznamom — s ním sa stávajú orchestrovaným nástrojom.
 
 ## Čo je tento workspace
 
-`homework/` je **samostatne stojaca submission** pre školské zadanie „Nastavenie kódovacího Agenta". Reprezentuje plnú konfiguráciu pre prácu na **NutriFlow** — osobnom MVP pre týždenné plánovanie jedál v češtine, postavenom na multi-agent orchestrácii cez Claude Agent SDK (5 runtime agentov: Orchestrator + Nutritionist + Chef + Shopper + Critic).
+Samostatne stojaca konfigurácia pre prácu na **NutriFlow** — osobnom MVP pre týždenné plánovanie jedál v češtine, postavenom na multi-agent orchestrácii cez Claude Agent SDK (5 runtime agentov: Orchestrator + Nutritionist + Chef + Shopper + Critic).
 
 Tento workspace ukazuje tri základné Claude Code primitivy:
 
@@ -22,7 +22,7 @@ Tieto pravidlá sú **nenegociovateľné** a aplikujú sa pri každej úlohe:
 2. **Typed handoff iba** — agenti si predávajú dáta výhradne cez Pydantic v2 schémy z `backend/src/nutriflow/domain/schemas.py`. Žiaden voľný text medzi agentmi.
 3. **Alergie nedotknuteľné** — žiaden agent ani fallback nesmie navrhnúť jedlo porušujúce dietary restrictions. Pri konflikte plán fail-uje, nie kompromis.
 4. **Shopper failure ≠ workflow failure** — ak Rohlik MCP zlyhá, plán sa dokončí so shopping listom bez cart syncu.
-5. **Žiadne pluginy / marketplace** (zadanie!) — všetky Skills sú **lokálne súbory** v `.claude/skills/`, žiaden `enabledPlugins`.
+5. **Žiadne pluginy / marketplace** — všetky Skills sú **lokálne súbory** v `.claude/skills/`, žiaden `enabledPlugins`.
 6. **TDD je default** — pre každý nový kus produkčného kódu (model, endpoint, agent, service) najprv test, potom implementácia.
 
 ## ★ Routing tabuľka — kedy čo invokovať
@@ -106,7 +106,7 @@ cd homework/mcp_servers/rohlik_promo && uv run python -c "from server import mcp
 
 - Žiadne ďalšie jazyky než čeština (ani toggle, ani i18n infraštruktúru).
 - Žiadna autentifikácia nad rámec dev session tokenu.
-- Žiadne pluginy/marketplace (zadanie!).
+- Žiadne pluginy/marketplace.
 - Žiadne mock DB v integration testoch — reálna Postgres v dockeri.
 - Žiadne `--no-verify` pri commitoch.
 
@@ -114,6 +114,5 @@ cd homework/mcp_servers/rohlik_promo && uv run python -c "from server import mcp
 
 - [README.md](README.md) — úvod, ako otvoriť tento workspace
 - [ARCHITECTURE.md](ARCHITECTURE.md) — diagram + mapping tabuľky
-- [HOMEWORK_BRIEF.md](HOMEWORK_BRIEF.md) — pôvodné zadanie a ako je splnené
 - [../GOAL.md](../GOAL.md) — autoritatívna špecifikácia NutriFlow projektu
 - [../CLAUDE.md](../CLAUDE.md) — pravidlá live projektu (rozšírená verzia tohto súboru)

@@ -1,6 +1,6 @@
 # rohlik-promo MCP Server
 
-Vlastný MCP stdio server emulujúci Rohlik akcie a cart sync. Slúži ako demoštračný príklad **postavenia vlastného MCP servera** pre NutriFlow homework.
+Vlastný MCP stdio server emulujúci Rohlik akcie a cart sync. Slúži ako demoštračný príklad **postavenia vlastného MCP servera** pre NutriFlow.
 
 ## Tools
 
@@ -49,7 +49,7 @@ Server je registrovaný v [`../../.mcp.json`](../../.mcp.json):
 }
 ```
 
-Claude Code pri otvorení `homework/` workspace automaticky spustí tento server v stdio mode a exposuje 3 tools pod menom `mcp__rohlik-promo__*`.
+Claude Code pri otvorení tohto workspace automaticky spustí tento server v stdio mode a exposuje 3 tools pod menom `mcp__rohlik-promo__*`.
 
 ## Demo modes
 
@@ -90,7 +90,7 @@ FastMCP automaticky:
 
 ## Prečo vlastný MCP server (a nie iba reuse `postgres`/`filesystem`)
 
-Tým ukazujeme, že vieme MCP **nielen použiť**, ale aj **postaviť**. Pre kurzové zadanie je to dôležitý signál — student demonštruje hlbšie pochopenie protokolu.
+Tým ukazujeme, že vieme MCP **nielen použiť**, ale aj **postaviť** — hlbšie pochopenie protokolu otvára priestor pre custom toolovanie nad doménovými Pydantic schémami.
 
 Server je úmyselne **mock-only** (žiadne reálne Rohlik HTTPS) — produkčná verzia by:
 1. Mala HTTPS klienta (`httpx`).

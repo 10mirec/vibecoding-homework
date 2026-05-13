@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# Idempotentný setup pre homework/ workspace.
+# Idempotentný setup pre agent workspace.
 # Spusti raz po klonovaní repa. Možno pustiť opakovane — nepoškodí nič.
 
 set -euo pipefail
 
-HOMEWORK_DIR="$(cd "$(dirname "$0")" && pwd)"
-cd "$HOMEWORK_DIR"
+WORKSPACE_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$WORKSPACE_DIR"
 
 echo "================================================================"
-echo " NutriFlow Homework — Bootstrap"
+echo " NutriFlow — Bootstrap agent workspace"
 echo "================================================================"
 
 echo ""
@@ -52,7 +52,7 @@ fi
 
 echo ""
 echo "================================================================"
-echo " ✓ Hotovo. Otvor 'homework/' v Claude Code ako workspace."
+echo " ✓ Hotovo. Otvor tento adresár v Claude Code ako workspace."
 echo ""
 echo "   - CLAUDE.md sa načíta automaticky"
 echo "   - /agents príkaz ukáže 8 subagentov"

@@ -1,7 +1,7 @@
 [project]
 name = "rohlik-promo-mcp"
 version = "0.1.0"
-description = "Custom MCP server pro mock Rohlik promotions a cart sync (homework demo pre NutriFlow)"
+description = "Custom MCP server pro mock Rohlik promotions a cart sync (NutriFlow)"
 requires-python = ">=3.12"
 dependencies = [
     "mcp[cli]>=1.2.0",

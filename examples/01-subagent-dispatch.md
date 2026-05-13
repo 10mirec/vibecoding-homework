@@ -16,7 +16,7 @@ Užívateľ pracuje na NutriFlow a chce pridať nové DB pole.
 
 > Pozriem CLAUDE.md routing tabuľku.
 
-Z `homework/CLAUDE.md` riadok:
+Z `CLAUDE.md` riadok:
 
 | Užívateľ chce... | Subagent | Skill | MCP |
 |---|---|---|---|

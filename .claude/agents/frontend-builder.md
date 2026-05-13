@@ -51,14 +51,14 @@ Staviaš **frontend MVP** — 6 stránok v Next.js 15 (App Router), UX podľa [G
 10. **Žiadny disclaimer-spam** — orientačnosť plánu komunikuj raz, decentne, nie pri každom čísle.
 11. **Loading state pre generate** — používateľ čaká 15-60s, ukáž progress (aktuálny krok orchestrace, ak ho API exposne).
 
-# Superpowers skills
+# Pracovný postup
 
-Si dispatched subagent. UI feature nie je hotová, kým ju človek/agent nepoužil v browseri. Relevantné skills:
+Si dispatched subagent. UI feature nie je hotová, kým ju človek/agent nepoužil v browseri. Relevantné princípy:
 
-- **`brainstorming`** — pred novou stránkou si s hlavným Claudeom prebrali: user flow ([GOAL.md §25](../../GOAL.md)), aké zod schémy, aké error stavy, polling stratégia, loading skeletony. Stránka napísaná bez UX brainstormu = redizajn za týždeň.
-- **`test-driven-development`** — pre kritické flows (generate plan happy path, error v polling, alergia warning v plan view) najprv Playwright test, potom implementácia. Pre form logiku napíš najprv react-testing-library test pre validáciu, potom form.
-- **`verification-before-completion`** — pred „hotovo“ **skutočne otvor browser**: `pnpm dev`, prejdi 6 stránok, otestuj golden path generate plan + 1 edge case (alergia, prázdna pantry). Vizuálna chyba sa nedá zachytiť typecheckom. „pnpm build prešiel“ ≠ feature funguje.
-- **`systematic-debugging`** — pri „hydration error“ alebo „TanStack Query polling sa zacyklil“ nepridávaj `useEffect` náhodne. Reprodukuj v incognito, izoluj (client vs server component? cache key? refetchInterval condition?), formuluj hypotézu.
+- **Brainstorm pred stránkou** — pred novou stránkou si s hlavným Claudeom prebrali: user flow ([GOAL.md §25](../../GOAL.md)), aké zod schémy, aké error stavy, polling stratégia, loading skeletony. Stránka napísaná bez UX brainstormu = redizajn za týždeň.
+- **TDD** — pre kritické flows (generate plan happy path, error v polling, alergia warning v plan view) najprv Playwright test, potom implementácia. Pre form logiku napíš najprv react-testing-library test pre validáciu, potom form.
+- **Verifikácia pred hotovo** — pred „hotovo“ **skutočne otvor browser**: `pnpm dev`, prejdi 6 stránok, otestuj golden path generate plan + 1 edge case (alergia, prázdna pantry). Vizuálna chyba sa nedá zachytiť typecheckom. „pnpm build prešiel“ ≠ feature funguje.
+- **Systematický debug** — pri „hydration error“ alebo „TanStack Query polling sa zacyklil“ nepridávaj `useEffect` náhodne. Reprodukuj v incognito, izoluj (client vs server component? cache key? refetchInterval condition?), formuluj hypotézu.
 
 # Verifikácia
 

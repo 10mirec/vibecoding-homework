@@ -1,6 +1,6 @@
-# Homework — Nastavenie kódovacího Agenta
+# NutriFlow — Nastavenie kódovacího Agenta
 
-Submission pre školské zadanie: **„Nasdílejte nastavení Vašeho kódovacího agenta, využijte MCP Servery, Skilly, Subagenty. NEPOUŽÍVEJTE PLUGINS ANI MARKETPLACE!"**
+Konfigurácia kódovacieho agenta postavená na **MCP Serveroch, Skills a Subagentoch** (bez pluginov a marketplace).
 
 **Platforma:** Claude Code
 **Projekt:** [NutriFlow](../GOAL.md) — osobné MVP pre týždenné plánovanie jedál (multi-agent orchestrácia, Czech-only)
@@ -19,9 +19,9 @@ Kompletná Claude Code konfigurácia ukazujúca 3 primárne primitivy:
 
 Tieto tri vrstvy drží pohromade **[CLAUDE.md](CLAUDE.md)** — orchestrátor, ktorý definuje *kedy a v akom poradí* invokovať čo.
 
-## Jak je toto zadání splněno
+## Prehľad konfigurácie
 
-| Požiadavka | Súbor / adresár | Počet |
+| Vrstva | Súbor / adresár | Počet |
 |---|---|---|
 | MCP Servery | [.mcp.json](.mcp.json), [mcp_servers/rohlik_promo/](mcp_servers/rohlik_promo/) | 3 |
 | Skills | [.claude/skills/](.claude/skills/) | 3 |
@@ -39,7 +39,7 @@ cd NutriFlow/homework
 # 2. Spusti bootstrap (overí dependencies + nainštaluje custom MCP server)
 bash bootstrap.sh
 
-# 3. Otvor homework/ v Claude Code ako workspace
+# 3. Otvor tento adresár v Claude Code ako workspace
 #    Claude automaticky načítá CLAUDE.md a uvidí všetkých 8 subagentov,
 #    3 skills a 3 MCP servery.
 
@@ -53,11 +53,10 @@ bash bootstrap.sh
 ## Štruktúra
 
 ```
-homework/
+.
 ├── README.md              ← si tu
 ├── CLAUDE.md              ← ★ orchestrátor, prvé čo Claude Code načíta
 ├── ARCHITECTURE.md        ← diagram + mapping tabuľky 8×3×3
-├── HOMEWORK_BRIEF.md      ← pôvodné zadanie + ako je splnené
 ├── bootstrap.sh           ← idempotentný setup skript
 ├── .claude/
 │   ├── settings.json      ← pluginless config + hook bonus
@@ -69,7 +68,7 @@ homework/
 └── examples/              ← 3 transcripty (subagent dispatch, skill invocation, MCP tool call)
 ```
 
-## Čo je NutriFlow (kontext pre hodnotiteľa)
+## Čo je NutriFlow
 
 Osobné MVP pre **jedného českého používateľa** ktoré generuje **týždenné plány jedál** + **nákupné zoznamy** s napojením na **Rohlik** (česká e-grocery sieť).
 
@@ -106,6 +105,3 @@ Pozri [ARCHITECTURE.md](ARCHITECTURE.md) pre diagram a detailný mapping. Krátk
 
 CLAUDE.md má **routing tabuľku** ktorá pre každý typ úlohy povie: *„dispatch subagent X, aktivuj skill Y, použi MCP server Z"*. To je „lepidlo" — bez nej sú tieto tri vrstvy len pasívnym zoznamom.
 
-## Odovzdanie
-
-GitHub: `<repo-url>/tree/main/homework`

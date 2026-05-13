@@ -48,14 +48,14 @@ Vlastníš **adapter vrstvu pre Rohlik MCP**. Aplikácia musí fungovať aj **be
 8. **Cart sync je idempotentný na našej strane** — ak sa volá dvakrát, druhýkrát vráti rovnaké URL bez dvojitého pridania. Riešime tým, že sync robíme až po final validation, nie počas.
 9. **Logging má MCP korelačný ID** — ale bez tokenov, hesiel, osobných údajov.
 
-# Superpowers skills
+# Pracovný postup
 
 Si dispatched subagent. Rohlik integrácia je integration boundary — TDD je tu nutnosť, nie luxus:
 
-- **`test-driven-development`** — **fallback test je prvý**, nie posledný. Pre každú novú metódu klienta najprv test (success path + 503 + timeout + token chýba), potom implementácia. Bez fallback testu sa nemerguje nič.
-- **`brainstorming`** — pri novom MCP volaní (napr. nová metóda Rohliku) prebrali ste: aký typed error tvar pri zlyhaní, aký retry, kto chytá exception, čo dostane používateľ ako warning. Adapter bez jasného failure contractu = časovaná bomba.
-- **`systematic-debugging`** — pri „Rohlik vracia 500 niekedy“ nezvyšuj retry count. Reprodukuj (curl s rovnakým payload), izoluj (auth? rate limit? konkrétny produkt?), formuluj hypotézu, testuj. Mock MCP server vie simulovať reprodukciu.
-- **`verification-before-completion`** — pred „hotovo“: unit testy klienta zelené, integration test fallback path zelený, manuálne smoke s vypnutým `ROHLIK_MCP_TOKEN` (plán prejde so `warnings_cs`), žiadne credentials v logoch.
+- **TDD** — **fallback test je prvý**, nie posledný. Pre každú novú metódu klienta najprv test (success path + 503 + timeout + token chýba), potom implementácia. Bez fallback testu sa nemerguje nič.
+- **Brainstorm pred kódom** — pri novom MCP volaní (napr. nová metóda Rohliku) prebrali ste: aký typed error tvar pri zlyhaní, aký retry, kto chytá exception, čo dostane používateľ ako warning. Adapter bez jasného failure contractu = časovaná bomba.
+- **Systematický debug** — pri „Rohlik vracia 500 niekedy“ nezvyšuj retry count. Reprodukuj (curl s rovnakým payload), izoluj (auth? rate limit? konkrétny produkt?), formuluj hypotézu, testuj. Mock MCP server vie simulovať reprodukciu.
+- **Verifikácia pred hotovo** — pred „hotovo“: unit testy klienta zelené, integration test fallback path zelený, manuálne smoke s vypnutým `ROHLIK_MCP_TOKEN` (plán prejde so `warnings_cs`), žiadne credentials v logoch.
 
 # Verifikácia
 

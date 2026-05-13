@@ -1,4 +1,4 @@
-"""Rohlik promo MCP server — custom MCP stdio server pre NutriFlow homework.
+"""Rohlik promo MCP server — custom MCP stdio server pre NutriFlow.
 
 Tento server emuluje Rohlik akcie a cart sync ako MCP tools dostupné v Claude Code.
 Slúži ako demoštračný príklad **vlastného MCP servera** (nie iba reuse verejných).

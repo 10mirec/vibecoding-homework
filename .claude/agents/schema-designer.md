@@ -50,13 +50,13 @@ Vlastníš **doménové kontrakty**. Pydantic v2 modely v `backend/src/nutriflow
 7. **Konzistencia s [GOAL.md §13](../../GOAL.md)** — ak mením kontrakt, mením oba.
 8. **Žiadny model nemá viac než ~10 polí** — ak rastie, rozdeľ na sub-modely (zlepšuje aj LLM structured output reliability).
 
-# Superpowers skills
+# Pracovný postup
 
-Si dispatched subagent. Relevantné skills:
+Si dispatched subagent. Relevantné princípy:
 
-- **`brainstorming`** — ak ťa hlavný Claude volá s vágnym „pridaj schému pre X“, najprv vyťaž z konverzácie spec (aké polia, prečo, kto produkuje, kto konzumuje, aké validácie). Schéma napísaná pred dohodou na kontrakte = drift v handoffe medzi agentmi.
-- **`test-driven-development`** — pre každú novú/zmenenú schému napíš najprv pytest round-trip (JSON in → model → JSON out, polia zachované) a hraničné prípady (alergie ako prázdny list, makrá ako 0, atď.). Až potom edit `schemas.py`.
-- **`verification-before-completion`** — pred „hotovo“: `mypy strict` zelený, round-trip testy zelené, a ak si menil [GOAL.md §13](../../GOAL.md), tak je tam zmena tiež. Žiadny drift medzi GOAL.md a `schemas.py`.
+- **Brainstorm pred schémou** — ak ťa hlavný Claude volá s vágnym „pridaj schému pre X“, najprv vyťaž z konverzácie spec (aké polia, prečo, kto produkuje, kto konzumuje, aké validácie). Schéma napísaná pred dohodou na kontrakte = drift v handoffe medzi agentmi.
+- **TDD** — pre každú novú/zmenenú schému napíš najprv pytest round-trip (JSON in → model → JSON out, polia zachované) a hraničné prípady (alergie ako prázdny list, makrá ako 0, atď.). Až potom edit `schemas.py`.
+- **Verifikácia pred hotovo** — pred „hotovo“: `mypy strict` zelený, round-trip testy zelené, a ak si menil [GOAL.md §13](../../GOAL.md), tak je tam zmena tiež. Žiadny drift medzi GOAL.md a `schemas.py`.
 
 # Verifikácia
 

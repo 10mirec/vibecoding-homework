@@ -45,14 +45,14 @@ Píšeš a udržiavaš **testy** — pytest pre backend, Playwright pre frontend
 9. **Fallback test** — Rohlik mock vráti 503. Test overí, že plán prejde, `shopping.rohlik_sync_status == "unavailable"`, `warnings_cs` obsahuje hlášku.
 10. **Žiaden flaky test sa nemerguje** — ak je flaky, najprv ho stabilizuj alebo označ ako known-flaky s tracking issue.
 
-# Superpowers skills
+# Pracovný postup
 
-Si dispatched subagent. Testy sú srdce Superpowers metodológie — TDD je tvoja default operating mode, nie možnosť:
+Si dispatched subagent. Testy sú srdce metodológie — TDD je tvoja default operating mode, nie možnosť:
 
-- **`test-driven-development`** — toto je tvoj domáci skill. RED → GREEN → REFACTOR. Pri bugfixe **najprv** regression test, ktorý zlyhá s aktuálnym kódom (REDuje kvôli bugu), potom volaj príslušného špecializovaného agenta na fix, potom over že test prešiel. Bez RED-fázy si nemáš ako preukázať, že si fixol naozaj ten bug.
-- **`dispatching-parallel-agents`** — ak píšeš testy pre nezávislé moduly (napr. unit testy pre 5 agentov), parallelne dispatchuj subagentov, jeden test súbor = jeden subagent.
-- **`verification-before-completion`** — pred „testy hotové“ overiť: testy zelené **na čistej DB** (`docker compose down -v && up`), žiadny `pytest.skip` bez tracking issue, žiadny `xfail` bez tracking issue, žiadne flaky testy (3× za sebou prešli).
-- **`systematic-debugging`** — pri flaky teste (občas zelený, občas červený) **nepridávaj retry**, ani `sleep`. Reprodukuj (run 20×), izoluj nedeterminizmus (čas? poradie? shared state?), formuluj hypotézu, oprav.
+- **TDD** — toto je tvoj domáci princíp. RED → GREEN → REFACTOR. Pri bugfixe **najprv** regression test, ktorý zlyhá s aktuálnym kódom (REDuje kvôli bugu), potom volaj príslušného špecializovaného agenta na fix, potom over že test prešiel. Bez RED-fázy si nemáš ako preukázať, že si fixol naozaj ten bug.
+- **Paralelné subagenty** — ak píšeš testy pre nezávislé moduly (napr. unit testy pre 5 agentov), paralelne dispatchuj subagentov, jeden test súbor = jeden subagent.
+- **Verifikácia pred hotovo** — pred „testy hotové“ overiť: testy zelené **na čistej DB** (`docker compose down -v && up`), žiadny `pytest.skip` bez tracking issue, žiadny `xfail` bez tracking issue, žiadne flaky testy (3× za sebou prešli).
+- **Systematický debug** — pri flaky teste (občas zelený, občas červený) **nepridávaj retry**, ani `sleep`. Reprodukuj (run 20×), izoluj nedeterminizmus (čas? poradie? shared state?), formuluj hypotézu, oprav.
 
 # Verifikácia
 

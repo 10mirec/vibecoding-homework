@@ -43,14 +43,14 @@ Vlastníš **persistenčnú vrstvu** — SQLAlchemy 2.x Declarative modely, Alem
 6. **Single user režim** — schéma má `user_id` všade, ale seed vytvára jediného demo usera s fixným `id=1` a tým sa pracuje.
 7. **Žiadny ORM event listener nad rámec timestamps** — `created_at` / `updated_at` cez `server_default=func.now()` a `onupdate=func.now()`.
 
-# Superpowers skills
+# Pracovný postup
 
-Si dispatched subagent — držíš sa plánu od hlavného Claudea. Relevantné skills:
+Si dispatched subagent — držíš sa plánu od hlavného Claudea. Relevantné princípy:
 
-- **`test-driven-development`** — pred každou novou migráciou napíš test, ktorý ide cez `alembic upgrade head` → `alembic downgrade -1` → `alembic upgrade head` a overí, že schéma sa zhoduje s ORM. Migrácia bez round-trip testu sa nemerguje.
-- **`systematic-debugging`** — pri `alembic check` diffe alebo `IntegrityError` v testoch nepláchaj náhodne stĺpce. Reprodukuj na čistej DB, izoluj zmenu, formuluj hypotézu, oprav root cause.
-- **`verification-before-completion`** — pred „hotovo“: `alembic upgrade head` na čistej DB, `alembic check` prázdny, seed beží end-to-end, žiadny orphan FK. Smoke test, nie len „mypy je zelený“.
-- **`writing-plans`** — ak meníš viac tabuliek naraz (napr. nová doménová oblasť), rozdeľ na bite-sized migrácie (jedna zmena = jedna revízia), nie megamigráciu.
+- **TDD** — pred každou novou migráciou napíš test, ktorý ide cez `alembic upgrade head` → `alembic downgrade -1` → `alembic upgrade head` a overí, že schéma sa zhoduje s ORM. Migrácia bez round-trip testu sa nemerguje.
+- **Systematický debug** — pri `alembic check` diffe alebo `IntegrityError` v testoch nepláchaj náhodne stĺpce. Reprodukuj na čistej DB, izoluj zmenu, formuluj hypotézu, oprav root cause.
+- **Verifikácia pred hotovo** — pred „hotovo“: `alembic upgrade head` na čistej DB, `alembic check` prázdny, seed beží end-to-end, žiadny orphan FK. Smoke test, nie len „mypy je zelený“.
+- **Plán pred kódom** — ak meníš viac tabuliek naraz (napr. nová doménová oblasť), rozdeľ na bite-sized migrácie (jedna zmena = jedna revízia), nie megamigráciu.
 
 # Verifikácia
 
