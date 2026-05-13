@@ -1,0 +1,13 @@
+# Python venv vytvorený uv sync v custom MCP servera
+mcp_servers/*/.venv/
+mcp_servers/*/uv.lock
+
+# Cache
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# Tool log (vytvorený PostToolUse hook v settings.json)
+nutriflow-tool-log.txt

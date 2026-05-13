@@ -1,0 +1,33 @@
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://nutriflow:nutriflow@db:5432/nutriflow"
+      ]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/workspaces/NutriFlow"
+      ]
+    },
+    "rohlik-promo": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/workspaces/NutriFlow/homework/mcp_servers/rohlik_promo",
+        "python",
+        "server.py"
+      ],
+      "env": {
+        "ROHLIK_MCP_MODE": "mock_success"
+      }
+    }
+  }
+}
